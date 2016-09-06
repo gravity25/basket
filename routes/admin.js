@@ -6,7 +6,7 @@ var express = require('express'),
 
 var router = express.Router();
 router.use(express.static(path.join(__dirname, '/../public')));
-
+//multer is used to upload file
 var multer = require('multer');
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
