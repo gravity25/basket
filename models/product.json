@@ -1,0 +1,57 @@
+[
+    {
+
+     "title": "Dell Inspiron 15 3542 Notebook",
+      "image_url": "http://images.locanto.in/1124159803/Offers-Free-Laptop-Service-Estimation-for-all-dell-laptop-models_1.jpg",
+      "price": 45000,
+      "overview": "2.3GHz Intel Core i5-3542 processor, 4GB DDR7L RAM, 1TB  ATA hard drive, 15'6-inch screen,Integrated Graphics, windows10",
+      "catagory": "Laptop"
+    },
+
+    {
+
+     "title": "Dell Inspiron 13 elite",
+      "image_url": "http://www.tabletsnlaptops.com/laptop-images/dell-latitude-e4200-1.jpg",
+      "price": 33000,
+      "overview": "1.7GHz Intel Core i3-500 processor, 4GB DDR3L RAM, 500GB 3200rpm Serial ATA hard drive, 14-inch screen,Integrated Graphics , DOS",
+      "catagory": "Laptop"
+    },
+
+    {
+
+     "title": "hp 15 ui42book",
+      "image_url": "http://www.wiknix.com/wp-content/uploads/2015/02/HP-15-R032TX-Laptop.jpg",
+      "price": 61000,
+      "overview": "2.73GHz Intel Core i5-Ui sixth gen processor, 8GB DDR8L RAM, 1.5TB 5400rpm Serial ATA hard drive, 15'6-inch screen,Integrated Graphics, windows 10",
+      "catagory": "Laptop"
+    },
+
+    {
+
+     "title": "lenevo classic 13",
+      "image_url": "http://ecx.images-amazon.com/images/I/41P-pLdd-CL.jpg",
+      "price": 41500,
+      "overview": "2GHz Intel Core i3-5005U processor, 4GB DDR3L RAM, 500GB 5400rpm Serial ATA hard drive., 14-inch screen,Integrated Graphics, DOS",
+      "catagory": "Laptop"
+    },
+
+{
+
+     "title": "SAMSUNG Galaxy S7",
+      "image_url": "https://rukminim1.flixcart.com/image/624/624/mobile/7/n/x/samsung-galaxy-s7-na-original-imaegmjszvhghyzc.jpeg?q=70",
+      "price": 48000,
+      "overview": "4 GB RAM 32 GB ROM Expandable Upto 200 GB, 5.1 inch Quad HD Display, 12MP Primary Camera, 5MP Front, 3000 mAh Li-Ion Battery, Android Marshmallow",
+      "catagory": "Mobile"
+    },
+
+    {
+      "title": "Samsung Galaxy J2",
+      "image_url": "http://ecx.images-amazon.com/images/I/41WOlOkE-HL.jpg",
+      "price": 7590,
+      "overview": "5.1-inch, quad-HD display, 3000mAh battery, 12MP camera, Fast and wireless charging, MicroSD, Android 6.0.1 Marshmallow",
+      "catagory": "Mobile"
+    },
+
+
+
+]

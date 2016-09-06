@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="/css/c_style.css">
+<style type="text/css">
+
+ul.product-item {
+  list-style: none;
+  font-size: 0px;
+  margin-bottom:5px;
+}
+ul.product-item li {
+  display: inline-block;
+  padding: 10px;
+  background: #fff;
+  
+  font-size: 16px;
+  font-size: 1rem;
+  vertical-align: top;
+  margin: 20px;
+  width: 320px;
+  overflow: auto;
+}
+ul.product-item li a {
+  text-decoration: none;
+  color: black;
+}
+ul.product-item li img {
+  max-width: 100%;
+  height: 300px;
+  margin: 0 0 5px;
+}
+ul.product-item li h3 {
+  margin: 0 0 3px;
+  text-decoration: none;
+}
+ul.product-item li p {
+  font-size: .9em;
+  line-height: 1em;
+  color: #999;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+</style>
+
+</style>
+
+</head>
+<body>
+  <span class="link1">
+    
+<div class="header">
+            <table width="100%" cellspacing="8"  >
+            <tr style="font-size:15px;font-weight:bold">
+            <td width="25%"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScyYC_djsYBZBcicIxMrDH-    cHI2wICk1fvoK40XAbdFHP9R9fZ" height="80" ></td>
+            <td align="right" width="15%"><a href="/" >Home</a></td>
+            <td align="center" width="15%"><a href="/products" >Products</a></td>
+            <td align="left" width="20%"><a href="/" >Contact Us</a></td>
+                                <% if (user) { %>
+                                    <td align="right" width="5%"><a href="/user/profile" ><%= user.user_id %></a></td>
+                                    <td align="right" width="5%"><a href="/user/logout" >logout</a></td>
+                                <% } else { %>
+                                    <td align="left" width="5%"><a href="/user/signin" >signin</a></td>
+                                    <td align="center" width="5%"><a href="/user/signup" >signup</a></td>
+                                <% } %>
+            <td align="center" width="5%"><a href="/add-to-cart/shopping-cart" >Cart</a></td>
+            </tr>
+            </table>
+</div>
+
+</span>
+
+<!-- <div class="banner" align="center">
+<h style="font-weight:100; font-size:3em">Products</h>
+</div> -->
+<br>
+<!-- <div>
+  <form action="/products/catagory" method="get">
+    <select name="name">
+      <option value="Laptop">Laptop</option>
+      <option value="Mobile">Mobile</option>
+    </select>
+    <input type="submit" />
+  </form>
+</div> -->
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Catagory</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/products/catagory/Laptop">Laptop</a>
+    <a href="/products/catagory/Mobile">Mobile</a>
+  </div>
+</div>
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+<ul class="product-item" align="center">
+<% for(var product=0; product<products.length; product++) { %>
+  <li>
+    <a href="/products/<%= products[product]._id %>">
+    <img src="<%= products[product].image_url %>" />
+    <h3><%= products[product].title %></h3>
+    </a>
+    <p><%= products[product].price %> Rs.</p>
+  </li>
+  <% } %>
+</ul>
+
+<span class="link3">
+    <div class="footer">
+       <table width="100%" cellspacing="8" align="center">
+       <tr>
+         <td align="center" style="font-size:20px;font-weight:bold">About</td>
+         <td align="center" style="font-size:20px;font-weight:bold">My Account</td>
+         <td align="center" style="font-size:20px;font-weight:bold">Information</td>
+         <td align="center" style="font-size:20px;font-weight:bold">Contact Us</td>
+       </tr>
+       <tr>
+          <td rowspan="3" align="center" valign="top">Welcome to our <br> ever growing Basket<br>An exciting place for the whole family to shop.</td>
+          <td align="center" style="color:#CCCCCC"><a href="/user/signin" >Signin</a></td>
+          <td align="center" style="color:#CCCCCC"><a href="/" >Home</a></td>
+          <td align="center">Crystal IT Park,Indore(M.P),India</td>
+       </tr>
+       <tr>
+          <td align="center" style="color:#CCCCCC"><a href="/user/signup" >Create Account</a></td>
+          <td align="center" style="color:#CCCCCC"><a href="/products" >Products</a></td>
+          <td align="center">+91 9009406777</td>
+       </tr>
+       <tr>
+          <td></td>
+          <td align="center" style="color:#CCCCCC"><a href="mail.jsp" >MailUs</a></td>
+          <td align="center" style="color:#CCCCCC"><a href="mailto:hello@systango.com" >hello@systango.com</a></td>
+       </tr>
+       </table>
+    </div></span>
+        <p id="footer">&copy; Basket Shoppers Limited</p>
+    
+
+</body>
+</html>

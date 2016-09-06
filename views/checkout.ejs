@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="css/c_style.css">
+</head>
+
+<span class="link1">
+        <div class="header">
+            <table width="100%" cellspacing="8"  >
+            <tr style="font-size:15px;font-weight:bold">
+            <td width="25%"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScyYC_djsYBZBcicIxMrDH-    cHI2wICk1fvoK40XAbdFHP9R9fZ" height="80" ></td>
+            <td align="right" width="15%"><a href="/" >Home</a></td>
+            <td align="center" width="15%"><a href="/products" >Products</a></td>
+            <td align="left" width="20%"><a href="/" >Contact Us</a></td>
+                                <% if (user) { %>
+                                    <td align="right" width="5%"><a href="/user/profile" ><%= user.user_id %></a></td>
+                                    <td align="right" width="5%"><a href="/user/logout" >logout</a></td>
+                                <% } else { %>
+                                    <td align="left" width="5%"><a href="/user/signin" >signin</a></td>
+                                    <td align="center" width="5%"><a href="/user/signup" >signup</a></td>
+                                <% } %>
+            <td align="center" width="5%"><a href="/add-to-cart/shopping-cart" >Cart</a></td>
+            </tr>
+            </table>
+  </div>
+</span>
+
+ <div align="center">
+       <table style=" solid #d9d9d9""><tr><td>
+       <form action="http://localhost:3000/add-to-cart/checkout" method="post" >
+       <table cellspacing="15">
+         <tr>
+           <td align="center">
+            <h1>Checkout</h1>
+            <h4>Your Total: <%= totalPrice %> Rs.</h4>
+          </td>
+         </tr>
+         <tr>
+            <td >
+              <label for="name" >Name</label><br>
+              <input type="text" name="name" size="30" required>
+            </td>
+         </tr>
+         <tr>
+            <td>
+            <label for="address" >Address</label><br>
+            <input type="text" name="address" size="30" required>
+            </td>
+         </tr>
+         <tr>
+            <td >
+              <label for="card-name" >Card Holder Name</label><br>
+              <input type="text" name="card-name" size="30" required>
+            </td>
+         </tr>
+         <tr>
+            <td >
+              <label for="card-number" >Card Number</label><br>
+              <input type="text" name="card-number" size="30" required>
+            </td>
+         </tr>
+         <tr>
+             <td align="center"><input type="submit" value="SUBMIT"style="backgroundcolor:#B0C4DE;color:black;height:45px;width:100px; border-radius: 25px" ></td>
+         </tr>
+       </table>
+       </form></td></tr></table>
+    </div>
+
+
+<span class="link3">
+    <div class="footer">
+       <table width="100%" cellspacing="8" align="center">
+       <tr>
+         <td align="center" style="font-size:20px;font-weight:bold">About</td>
+         <td align="center" style="font-size:20px;font-weight:bold">My Account</td>
+         <td align="center" style="font-size:20px;font-weight:bold">Information</td>
+         <td align="center" style="font-size:20px;font-weight:bold">Contact Us</td>
+       </tr>
+       <tr>
+          <td rowspan="3" align="center" valign="top">Welcome to our <br> ever growing Basket<br>An exciting place for the whole family to shop.</td>
+          <td align="center" style="color:#CCCCCC"><a href="/user/signin" >Signin</a></td>
+          <td align="center" style="color:#CCCCCC"><a href="/" >Home</a></td>
+          <td align="center">Crystal IT Park,Indore(M.P),India</td>
+       </tr>
+       <tr>
+          <td align="center" style="color:#CCCCCC"><a href="/user/signup" >Create Account</a></td>
+          <td align="center" style="color:#CCCCCC"><a href="/products" >Products</a></td>
+          <td align="center">+91 9009406777</td>
+       </tr>
+       <tr>
+          <td></td>
+          <td align="center" style="color:#CCCCCC"><a href="mail.jsp" >MailUs</a></td>
+          <td align="center" style="color:#CCCCCC"><a href="mailto:hello@systango.com" >hello@systango.com</a></td>
+       </tr>
+       </table>
+    </div></span>
+        <p id="footer">&copy; Basket Shoppers Limited</p>
+</body>
+</html>
