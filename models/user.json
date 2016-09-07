@@ -1,0 +1,39 @@
+[
+
+    {
+
+	"name":"Rakesh Verma",
+	"user_id":"rakesh123@gmail.com",
+	"password":"rak123",
+	"address":"22/6 annapurna nagar,indore",
+	"mobile":"9863785426"
+    },
+
+{
+
+	"name":"varun sharma",
+	"user_id":"varun123@gmail.com",
+	"password":"var123",
+	"address":"55 kanpuria colony",
+	"mobile":"783544274"
+    },
+
+  {
+
+	"name":"garvit agrawal",
+	"user_id":"garvit123@gmail.com",
+	"password":"gar123",
+	"address":"32 kalani nagar",
+	"mobile":"7254428253"
+    },
+
+{
+
+	"name":"piyush singh",
+	"user_id":"piyush123@gmail.com",
+	"password":"piy123",
+	"address":"22/9 scheme 165",
+	"mobile":"8887325266"
+    },
+
+]
