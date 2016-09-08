@@ -22,7 +22,8 @@ var storage =   multer.diskStorage({
     callback(null, './public/uploads');
   },
   filename: function (req, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now());
+    var name = req.user.user_id;
+    callback(null, name);
   }
 });
 var upload = multer({ storage : storage}).single('userImage');
@@ -38,14 +39,16 @@ router.post('/profile/upload',  function(req, res, next) {
         var contentType = req.file.mimetype;
         var id = req.user.id;
         //reading the image and saving/updating it in the database
-          fs.readFile( req.file.path, function (err, data) {
+         fs.readFile( req.file.path, function (err, data) {
             var update = { img: { data: data, contentType: contentType } };
             User.findByIdAndUpdate({ _id: id}, update, function(err, user){
               if(err){
                 throw err;
               }
-              var img = 
-            res.redirect('/user/profile');
+              fs.unlink(req.file.path, function(err){
+                if(err) throw err;
+                res.redirect('/user/profile');
+              })
           });
         })
         
