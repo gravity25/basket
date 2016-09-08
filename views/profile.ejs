@@ -43,6 +43,19 @@
 <% } %>
 </div>
 
+<br><br>
+
+<div>
+
+	<img height="128px" width="128px" src="data:image/jpeg;base64,<%= image %>" alt="Upload your image" />
+
+	<form action="/user/profile/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="userImage" size="50" />
+    <input type="submit" value="Upload File" />
+    </form>
+</div>
+
+
 <br><br><br>
 <div align="center">
 	   <table style=" solid #d9d9d9""><tr><td>

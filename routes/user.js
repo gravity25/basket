@@ -1,5 +1,6 @@
 var express = require('express'),
     passport = require('passport'),
+    fs = require('fs');
 	  User = require('./../models/user.js'),
     Order = require('./../models/order.js'),
     path = require('path');
@@ -14,14 +15,58 @@ router.use(express.static(path.join(__dirname, '/../public')));
 var logoutEvent = require('./index.js').eventemitter;
 
 
+//multer is used to upload file
+var multer = require('multer');
+var storage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './public/uploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname + '-' + Date.now());
+  }
+});
+var upload = multer({ storage : storage}).single('userImage');
+
+
+router.post('/profile/upload',  function(req, res, next) {
+
+   upload(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        console.log(req.file);
+        var contentType = req.file.mimetype;
+        var id = req.user.id;
+        //reading the image and saving/updating it in the database
+          fs.readFile( req.file.path, function (err, data) {
+            var update = { img: { data: data, contentType: contentType } };
+            User.findByIdAndUpdate({ _id: id}, update, function(err, user){
+              if(err){
+                throw err;
+              }
+              var img = 
+            res.redirect('/user/profile');
+          });
+        })
+        
+
+   }) 
+});       
+
+
+
 
 
 router.get('/profile', isLoggedIn, function(req, res){
   console.log(req.user);
+  var img = "";
+  if(req.user.img.data){
+    img = new Buffer(req.user.img.data).toString('base64');
+  }
   if (req.isAuthenticated() && (req.user.user_id=='varuns@123' || req.user.user_id=='garvit@123')){
-    return res.render('profile.ejs', {user: req.user, admin:"admin"});
+    return res.render('profile.ejs', {user: req.user, admin:"admin", image: img });
   };
-  res.render('profile.ejs', {user: req.user, admin: ""});
+  res.render('profile.ejs', {user: req.user, admin: "", image: img });
 });
 
 

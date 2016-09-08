@@ -6,7 +6,8 @@ var userSchema = {
   password: { type: String, reqired: true },
   name: { type: String, required: false },
   address: { type: String, reqired: false },
-  mobile: { type: Number, reqired: false }
+  mobile: { type: Number, reqired: false },
+  img: { data: Buffer, contentType: String }
 };
 
 var schema = new mongoose.Schema(userSchema);
