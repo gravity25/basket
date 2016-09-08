@@ -6,9 +6,7 @@ var router = express.Router();
 
 router.use(express.static(path.join(__dirname, '/../public')));
 
-//All APIs falls under admin
 
-//display all the products
 router.get('/', function(req, res, next){
   Products.find(function(err, products){
     if(err) return next(err);
