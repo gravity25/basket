@@ -45,7 +45,7 @@ router.post('/profile/upload',  function(req, res, next) {
               if(err){
                 throw err;
               }
-              fs.unlink(req.file.path, function(err){
+              fs.unlink(req.file.path, function(err){ //it will remove stored imajes and add new one.
                 if(err) throw err;
                 res.redirect('/user/profile');
               })
