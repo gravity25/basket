@@ -15,6 +15,8 @@ var express = require('express'),
 
 var app = express();
 
+
+//requiring router saved on routes folder
 var index = require('./routes/index.js').router;
 var admin = require('./routes/admin.js');
 var user = require("./routes/user.js");
@@ -23,33 +25,34 @@ var addToCart = require('./routes/cart.js');
 //var catagory = require('./routes/catagory.js')
 
 
-//var url = "mongodb://localhost:27017/basket_varun";
 
-//connect to the mongod server
-//mongoose.connect(url);
+//getting server and passport code
 require('./config/server');
 require('./config/passport');
+
 
 //Parses the text as JSON and exposes the resulting object on req.body
 app.use(bodyParser.json());
 //urlecncode set to true if body is sent by url
 app.use(bodyParser.urlencoded({ extended: false }));
-//upload the file in tmp directory
 
 //retrive the body parameters and validate the submit request
 app.use(validator());
 //set to use cookie-parser
 app.use(cookieParser());
-//set session
+
+//set session and its options
 app.use(session({
 	secret: "secretkeytosavesession", //secret used to sign the session ID cookie
-	resave: false, //Forces the session to be saved back to the session store, even if the session was never modified during the request.
-	saveUninitialized: false, //Forces a session that is "uninitialized" to be saved to the store
+	resave: false, //if true: Forces the session to be saved back to the session store, even if the session was never modified during the request.
+	saveUninitialized: false, //if true: Forces a session that is "uninitialized" to be saved to the store
 	store: new MongoStore({ mongooseConnection: mongoose.connection }), //use existing mongoose connection
-	cookie: ({ maxAge: 24*60*60*1000}) //session expiry time
+	cookie: ({ maxAge: 24*60*60*1000}) //session expiry time in set-cookie attribute  
 }));
+
 //flash initializatoin
 app.use(flash());
+
 //passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
@@ -71,9 +74,6 @@ app.use('/user', user);
 app.use('/products', products);
 app.use('/add-to-cart', isLoggedIn, addToCart);
 //app.use('/pd/catagory', catagory);
-
-// app.listen(3000);
-// console.log('Listening on port 3000!');
 
 
 // catch 404 and forward to error handler

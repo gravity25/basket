@@ -73,7 +73,7 @@ var order = new Order({
        name: req.body.name
   });
     order.save(function(err,result){
-       req.flash('success', 'successly bought product');
+       req.flash('success', 'successfully bought product');
 
        req.session.cart =null;
        res.render('order.ejs', {order: order, user: req.user});

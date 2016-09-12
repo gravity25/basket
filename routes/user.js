@@ -12,6 +12,7 @@ var router = express.Router();
 
 router.use(express.static(path.join(__dirname, '/../public')));
 
+//take the same eventEmitter object created in index route.
 var logoutEvent = require('./index.js').eventemitter;
 
 
@@ -51,8 +52,7 @@ router.post('/profile/upload',  function(req, res, next) {
               })
           });
         })
-        
-
+      
    }) 
 });       
 
@@ -123,7 +123,7 @@ router.get('/logout', isLoggedIn, function(req, res, next){
       console.log(err);
     }
     });
-  req.logout();    //method added by passport
+  req.logout();    //logout method added by passport
   console.log("logging out");
   logoutEvent.emit('logout-msg', { "message": "you have successfully logged out."});
   res.redirect('/');
