@@ -16,6 +16,28 @@ var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
+ * Get IP Address of server
+ */
+function getIPAddresses() {
+
+    var ipAddresses = [];
+
+    var interfaces = require('os').networkInterfaces();
+    for (var facesName in interfaces) {
+        var iface = interfaces[facesName];
+        for (var i = 0; i < iface.length; i++) {
+            var alias = iface[i];
+            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                ipAddresses.push(alias.address);
+            }
+        }
+    }
+
+    return ipAddresses[0];
+}
+
+
+/**
  * Create HTTP server.
  */
 
@@ -24,8 +46,9 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+var ipAddress = getIPAddresses();
 
-server.listen(port);
+server.listen(port, ipAddress);
 server.on('error', onError);
 server.on('listening', onListening);
 
