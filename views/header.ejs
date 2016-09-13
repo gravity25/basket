@@ -1,0 +1,20 @@
+<span class="link1">
+    <div class="header">
+        <table width="100%" cellspacing="8"  >
+            <tr style="font-size:15px;font-weight:bold">
+            <td width="25%"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcScyYC_djsYBZBcicIxMrDH-    cHI2wICk1fvoK40XAbdFHP9R9fZ" height="80" ></td>
+            <td align="right" width="15%"><a href="/" >Home</a></td>
+            <td align="center" width="15%"><a href="/products" >Products</a></td>
+            <td align="left" width="20%"><a href="/" >Contact Us</a></td>
+            <% if (user) { %>
+                <td align="right" width="5%"><a href="/user/profile" ><%= user.user_id %></a></td>
+                <td align="right" width="5%"><a href="/user/logout" >logout</a></td>
+            <% } else { %>
+                <td align="left" width="5%"><a href="/user/signin" >signin</a></td>
+                <td align="center" width="5%"><a href="/user/signup" >signup</a></td>
+                <% } %>
+            <td align="center" width="5%"><a href="/add-to-cart/shopping-cart" >Cart</a></td>
+            </tr>
+        </table>
+    </div>
+</span>
