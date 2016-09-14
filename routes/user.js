@@ -53,12 +53,8 @@ router.post('/profile/upload',  function(req, res, next) {
         })
         
 
-   }) 
+      }) 
 });       
-
-
-
-
 
 router.get('/profile', isLoggedIn, function(req, res){
   console.log(req.user);
@@ -92,7 +88,6 @@ router.put('/profile/:id', isLoggedIn, function(req, res, next){
   });
 });
 
-
 router.get('/profile/myOrder', isLoggedIn, function(req, res, next){
   Order.find({user: req.user}, function(err, orders){
     if(err){
@@ -114,8 +109,6 @@ router.get('/profile/myOrder', isLoggedIn, function(req, res, next){
   });
 });
 
-
-
 router.get('/logout', isLoggedIn, function(req, res, next){
   //removing session
   req.session.destroy(function(err) {
@@ -128,9 +121,6 @@ router.get('/logout', isLoggedIn, function(req, res, next){
   logoutEvent.emit('logout-msg', { "message": "you have successfully logged out."});
   res.redirect('/');
 });
-
-
-
 
 //use notloggedin for all user routes written after it
 router.use('/', notLoggedIn, function(req, res, next){
